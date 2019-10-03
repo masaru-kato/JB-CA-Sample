@@ -92,6 +92,7 @@ define([
         $('#setting2').val(value2);
         $('#setting3').val(value3);
         $('#setting4').val(value4);
+
     }
 
     // -----------------------------------
@@ -106,6 +107,12 @@ define([
         payload.arguments.execute.inArguments[0].setting2 = value2;
         payload.arguments.execute.inArguments[0].setting3 = value3;
         payload.arguments.execute.inArguments[0].setting4 = value4;
+
+        if(value1 == ""){
+            $('#errmsg').show();
+            payload['metaData'].isConfigured = false;
+            return;
+        }
 
         payload['metaData'].isConfigured = true;
 
