@@ -87,23 +87,31 @@ define([
         var value3 = payload.arguments.execute.inArguments[0].setting3;
         var value4 = payload.arguments.execute.inArguments[0].setting4;
         console.log(`values are ${value1},${value2},${value3},${value4}`);
-        $('#inputInfo').val(value1);
+        
+        $('#setting1').val(value1);
+        $('#setting2').val(value2);
+        $('#setting3').val(value3);
+        $('#setting4').val(value4);
     }
 
     // -----------------------------------
     function save() {
         // 設定画面の設定値をpayloadへ保存
-        var value = $('#inputInfo').val();
+        var value1 = $('#setting1').val();
+        var value2 = $('#setting2').val();
+        var value3 = $('#setting3').val();
+        var value4 = $('#setting4').val();
 
-        payload.arguments.execute.inArguments[0].setting1 = value;
-        //payload.arguments.execute.inArguments[0].setting2 = value;
-        //payload.arguments.execute.inArguments[0].setting3 = value;
-        //payload.arguments.execute.inArguments[0].setting4 = value;
+        payload.arguments.execute.inArguments[0].setting1 = value1;
+        payload.arguments.execute.inArguments[0].setting2 = value2;
+        payload.arguments.execute.inArguments[0].setting3 = value3;
+        payload.arguments.execute.inArguments[0].setting4 = value4;
 
         payload['metaData'].isConfigured = true;
 
         console.log(`Saved!! Payload: ${JSON.stringify(payload)}`);
         connection.trigger('updateActivity', payload);
     }
+
 
 });

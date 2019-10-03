@@ -15,9 +15,17 @@
     "arguments": {
         "execute": {
            "inArguments":[
-				{
-					"contactKey": "{{Contact.Key}}"	
-                }									
+            {
+              "setting1": "",
+              "setting2": "",
+              "setting3": "",
+              "setting4": "",
+              "contactKey": "{{Contact.Key}}",
+              "FirstName": "{{Contact.Attribute.TestDE1.FirstName}}",
+              "LastName": "{{Contact.Attribute.TestDE1.LastName}}",
+              "Birthday": "{{Contact.Attribute.TestDE1.Birthday}}",
+              "Email": "{{Contact.Attribute.TestDE1.Email}}"	
+            }
 			],
           "outArguments": [],
           "url": "https://jb-ca-sample.herokuapp.com/journeybuilder/execute",
