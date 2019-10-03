@@ -1,13 +1,7 @@
-# Journey Builder Activity Template
-### Starter template for a messaging JB Activity using Node.JS
+# Journey Builder Custom Activity Sample
+### Sample JB Custom Activity using Node.JS/MongoDB
 
-**NOTE:** This app and the associated code is NOT production quality, its pure purpose is to demonstrate the full flow of custom interactions in Journey Builder
-
-### Pre-Requisites
-
-* Node.js (if you'd like to test locally)
-* A Marketing Cloud Account with Journey Builder
-* A publicly accessible web server (this template was built using a free [Heroku](https://heroku.com) account with SSL support
+**NOTE:** Don't use this app for prodution. no one is responsible. just sample.
 
 ### Getting Started
 
@@ -46,13 +40,13 @@ This guide covers Heroku, skip this step if you are familiar on how to deploy a 
 3. Click on "Reveal config vars"
 4. Add a new var called jwtSecret and paste the App Signature you got from step 3 when configuring your package in Marketing Cloud
 
-#### Testing your Activity
+#### Provision mLab MongoDB
 
-1. Login into Marketing Cloud and navigate to Journey Builder
-2. You should be able to see your custom activity and drag it into the canvas!
+1. Add ｍLab MongoDB addon to your app.
+2. Create user/password and create ConnectionString.
+3. Set ConnectionString to Heroku vars named "MONGODB_URI" which was set with provisioning of mLab Mongo.
 
-#### Want to learn more?
+#### Customize and Test your Activity!!
 
-If you'd like to learn more about building custom Journey Builder Activities and our collection of Custom Activities available to you today, email us at [info@devsutd.com](mailto:info@devsutd.com)
+1. Customize and Test your Activity as you like.
 
-Also, follow us on [LinkedIn](https://www.linkedin.com/company/10701607/) to get the latest updates and great articles about Salesforce Marketing Cloud!
