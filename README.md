@@ -2,6 +2,7 @@
 ### Sample JB Custom Activity using Node.JS/MongoDB
 
 **NOTE:** Don't use this app for prodution. no one is responsible. just sample.
+This app just push Contact information sent from JB to MongoDB. That's it. You can customize.
 
 ### Getting Started
 
@@ -45,8 +46,8 @@ This guide covers Heroku, skip this step if you are familiar on how to deploy a 
 1. Add ｍLab MongoDB addon to your app.
 2. Create user/password and create ConnectionString.
 3. Set ConnectionString to Heroku vars named "MONGODB_URI" which was set with provisioning of mLab Mongo.
+    ex. mongodb://[USER]:[PASSWORD]@[SERVERNAME].mlab.com:[PORTNO]/[DBNAME]
 
 #### Customize and Test your Activity!!
 
 1. Customize and Test your Activity as you like.
-
