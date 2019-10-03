@@ -73,27 +73,107 @@ exports.save = function (req, res) {
  */
 exports.execute = function (req, res) {
 
+    var decodedArgs = "";
+    var contactKey = "";
+    var inParams = "";
+  
     // example on how to decode JWT
-    JWT(req.body, process.env.jwtSecret, (err, decoded) => {
-
+      JWT(req1.body, process.env.jwtSecret, (err, decoded) => {
+  
         // verification error -> unauthorized request
         if (err) {
             console.error(err);
-            return res.status(401).end();
+            return res1.status(401).end();
         }
-
+  
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            
+          // ok
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
+  
+            console.log(`PARAMETERS: ${JSON.stringify(decoded.inArguments)}`);
             
-            logData(req);
-            res.send(200, 'Execute');
+            contactKey = decodedArgs.contactKey;
+            inParams = decoded.inArguments;
+            
         } else {
+          // NG
             console.error('inArguments invalid.');
-            return res.status(400).end();
+            return res1.status(400).end();
         }
-    });
+      });
+      
+      /*
+      // From
+      const querystring = require('querystring');
+      const https = require('https');
+              
+      var param1 = contactKey;
+      var params = "?a=nodea&b=nodeb&c=nodec&d=" + param1;
+      var urlpath = encodeURI('/45sk4d4xhvf' + params);
+      //var urlpath = '45sk4d4xhvf' + params;
+      console.log(`PATH: ${urlpath}`);
+  
+      const options = {
+        protocol: 'https:',
+        host: 'fe3915707564057a721674.pub.s10.sfmc-content.com',
+        path: urlpath,
+        method: 'GET',
+      };
+  
+      const req = https.request(options, (res) => {
+          res.on('data', (chunk) => {
+              console.log(`BODY: ${chunk}`);
+          });
+          res.on('end', () => {
+              console.log('No more data in response.');
+          });
+      })
+  
+      req.on('error', (e) => {
+        console.error(`problem with request: ${e.message}`);
+      });
+  
+      req.end();
+      */
+  
+      // Mongo Start
+      const mongodb = require('mongodb');
+
+      try{
+        var dt = new Date();
+        var formatted = dt.toString();
+        
+        let seedData = {
+            contactkey: param1,
+            params: inParams,
+            date: formatted
+        };
+        
+       let uri = process.env.MONGODB_URI
+        mongodb.MongoClient.connect(uri, function(err, client) {            
+            if(err) throw err;
+        
+            let db = client.db('heroku_tjqx7b5m');
+            let contacts = db.collection('contacts');
+    
+            console.log(`MONGO INSERT DATA: ${JSON.stringify(seedData)}`);
+            contacts.insertOne(seedData, function(err, result) {
+        
+            if(err) throw console.log(`MONGO INSERT error!!!`);
+    
+            console.log(`MONGO INSERT result: ${result}`);
+            });
+        });
+      }catch(ex){
+        console.error(`Exception!!!: ${JSON.stringify(ex)}`);
+        res1.send(500, 'Execute');
+      }
+      // Mondo End
+  
+      logData(req1);
+      res1.send(200, 'Execute');
+    
 };
 
 

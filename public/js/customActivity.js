@@ -7,6 +7,9 @@ define([
 
     var connection = new Postmonger.Session();
     var payload = {};
+    var steps = [ // initialize to the same value as what's set in config.json for consistency
+        { "label": "Step 1", "key": "step1" }
+    ];
 
     $(window).ready(onRender);
 
@@ -32,8 +35,10 @@ define([
     }
 
     function initialize (data) {
+        console.log("initialize is called.");
         if (data) {
             payload = data;
+            init();
         }
     }
 
@@ -58,6 +63,7 @@ define([
     }
 
     function onClickedNext () {
+        console.log("onClickedNext is called.");
         save();
     }
 
@@ -73,9 +79,30 @@ define([
     function showStep(step, stepIndex) {
     }
 
+    // -----------------------------------
+    function init() {
+        // 設定画面の初期表示 ※設定値はconfig.jsonで定義しておく
+        var value1 = payload.arguments.execute.inArguments[0].setting1;
+        var value2 = payload.arguments.execute.inArguments[0].setting2;
+        var value3 = payload.arguments.execute.inArguments[0].setting3;
+        var value4 = payload.arguments.execute.inArguments[0].setting4;
+        console.log(`values are ${value1},${value2},${value3},${value4}`);
+        $('#inputInfo').val(value1);
+    }
+
+    // -----------------------------------
     function save() {
+        // 設定画面の設定値をpayloadへ保存
+        var value = $('#inputInfo').val();
+
+        payload.arguments.execute.inArguments[0].setting1 = value;
+        //payload.arguments.execute.inArguments[0].setting2 = value;
+        //payload.arguments.execute.inArguments[0].setting3 = value;
+        //payload.arguments.execute.inArguments[0].setting4 = value;
+
         payload['metaData'].isConfigured = true;
 
+        console.log(`Saved!! Payload: ${JSON.stringify(payload)}`);
         connection.trigger('updateActivity', payload);
     }
 
