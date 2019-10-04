@@ -111,10 +111,9 @@ define([
         if(value1 == ""){
             $('#errmsg').show();
             payload['metaData'].isConfigured = false;
-            return;
+        }else{
+            payload['metaData'].isConfigured = true;
         }
-
-        payload['metaData'].isConfigured = true;
 
         console.log(`Saved!! Payload: ${JSON.stringify(payload)}`);
         connection.trigger('updateActivity', payload);
