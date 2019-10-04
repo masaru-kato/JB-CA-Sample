@@ -52,4 +52,4 @@ This guide covers Heroku, skip this step if you are familiar on how to deploy a 
 
 1. Customize and Test your Activity as you like.
 
-あ
+あいうえ
