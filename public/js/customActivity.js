@@ -112,12 +112,13 @@ define([
             //$('#errmsg').show(); 画面のクルクルを止めることができないので・・
             // Journey validationでエラーになる
             payload['metaData'].isConfigured = false;
+            connection.trigger('updateButton', { button: 'next', text: 'done', visible: true, enabled: false });
         }else{
             payload['metaData'].isConfigured = true;
-        }
 
-        console.log(`Saved!! Payload: ${JSON.stringify(payload)}`);
-        connection.trigger('updateActivity', payload);
+            console.log(`Saved!! Payload: ${JSON.stringify(payload)}`);
+            connection.trigger('updateActivity', payload);
+            }
 
     }
 
