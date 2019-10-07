@@ -111,8 +111,8 @@ define([
         if(value1 == ""){
             //$('#errmsg').show(); 画面のクルクルを止めることができないので・・
             // Journey validationでエラーになる
-            payload['metaData'].isConfigured = false;
-            connection.trigger('updateButton', { button: 'next', text: 'done', visible: true, enabled: false });
+            payload['metaData'].isConfigured = "";
+            //connection.trigger('updateButton', { button: 'next', text: 'done', visible: true, enabled: false });
         }else{
             payload['metaData'].isConfigured = true;
 
