@@ -110,10 +110,12 @@ define([
 
         if(value1 == ""){
             // Journey validationでエラーになる
+            $('#errmsg').show();
             payload['metaData'].isConfigured = false;
             connection.trigger('ready');
             //connection.trigger('updateButton', { button: 'next', text: 'done', visible: true, enabled: false });
         }else{
+            $('#errmsg').hide();
             payload['metaData'].isConfigured = true;
 
             console.log(`Saved!! Payload: ${JSON.stringify(payload)}`);
