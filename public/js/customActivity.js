@@ -111,7 +111,7 @@ define([
         if(value1 == ""){
             // Journey validationでエラーになる
             payload['metaData'].isConfigured = "";
-            //connection.trigger('updateButton', { button: 'next', text: 'done', visible: true, enabled: false });
+            connection.trigger('updateButton', { button: 'next', text: 'done', visible: true, enabled: false });
         }else{
             payload['metaData'].isConfigured = true;
 
