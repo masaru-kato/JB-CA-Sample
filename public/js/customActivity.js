@@ -113,10 +113,11 @@ define([
             payload['metaData'].isConfigured = false;
         }else{
             payload['metaData'].isConfigured = true;
-        }
 
-        console.log(`Saved!! Payload: ${JSON.stringify(payload)}`);
-        connection.trigger('updateActivity', payload);
+            console.log(`Saved!! Payload: ${JSON.stringify(payload)}`);
+            connection.trigger('updateActivity', payload);
+            }
+
     }
 
 
