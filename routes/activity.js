@@ -152,13 +152,14 @@ exports.execute = function (req, res) {
 
     let uri = process.env.MONGODB_URI
     let dbname = uri.split("/").pop();
-    console.log(`MONGO DB NAME: ${dbname}`);
+    let colname = decodedArgs.setting1;
+    console.log(`MONGO DB NAME/COLLECTION: ${dbname}/${colname}`);
 
     mongodb.MongoClient.connect(uri, function (err, client) {
       if (err) throw err;
 
       let db = client.db(dbname);
-      let contacts = db.collection('contacts');
+      let contacts = db.collection(colname);
 
       console.log(`MONGO INSERT DATA: ${JSON.stringify(seedData)}`);
       contacts.insertOne(seedData, function (err, result) {
