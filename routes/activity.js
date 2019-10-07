@@ -146,7 +146,7 @@ exports.execute = function (req, res) {
     var formatted = dt.toString();
 
     let seedData = {
-      contactkey: param1,
+      contactkey: contactKey,
       params: inParams,
       date: formatted
     };
