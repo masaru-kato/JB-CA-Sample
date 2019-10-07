@@ -150,7 +150,7 @@ exports.execute = function (req, res) {
       date: formatted
     };
 
-    let uri = process.env.MONGODB_URI
+    let uri = process.env.MONGODB_URI;
     let dbname = uri.split("/").pop();
     let colname = decodedArgs.setting1;
     console.log(`MONGO DB NAME/COLLECTION: ${dbname}/${colname}`);
