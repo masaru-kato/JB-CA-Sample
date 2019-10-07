@@ -78,12 +78,12 @@ exports.execute = function (req, res) {
   var inParams = "";
 
   // example on how to decode JWT
-  JWT(req1.body, process.env.jwtSecret, (err, decoded) => {
+  JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
     // verification error -> unauthorized request
     if (err) {
       console.error(err);
-      return res1.status(401).end();
+      return res.status(401).end();
     }
 
     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
@@ -99,7 +99,7 @@ exports.execute = function (req, res) {
     } else {
       // NG
       console.error('inArguments invalid.');
-      return res1.status(400).end();
+      return res.status(400).end();
     }
   });
 
@@ -184,12 +184,12 @@ exports.execute = function (req, res) {
   */
   } catch (ex) {
     console.error(`Exception!!!: ${JSON.stringify(ex)}`);
-    res1.send(500, 'Execute');
+    res.send(500, 'Execute');
   }
   // Mondo End
 
-  logData(req1);
-  res1.send(200, 'Execute');
+  logData(req);
+  res.send(200, 'Execute');
 
 };
 
