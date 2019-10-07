@@ -73,7 +73,7 @@ exports.save = function (req, res) {
  */
 exports.execute = function (req, res) {
 
-  var decodedArgs = "";
+  var decodedArgs;
   var contactKey = "";
   var inParams = "";
 
@@ -89,7 +89,7 @@ exports.execute = function (req, res) {
     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
       // ok
       // decoded in arguments
-      var decodedArgs = decoded.inArguments[0];
+      decodedArgs = decoded.inArguments[0];
 
       console.log(`PARAMETERS: ${JSON.stringify(decoded.inArguments)}`);
 
