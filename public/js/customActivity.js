@@ -109,7 +109,6 @@ define([
         payload.arguments.execute.inArguments[0].setting4 = value4;
 
         if(value1 == ""){
-            //$('#errmsg').show(); 画面のクルクルを止めることができないので・・
             // Journey validationでエラーになる
             payload['metaData'].isConfigured = "";
             //connection.trigger('updateButton', { button: 'next', text: 'done', visible: true, enabled: false });
@@ -118,7 +117,7 @@ define([
 
             console.log(`Saved!! Payload: ${JSON.stringify(payload)}`);
             connection.trigger('updateActivity', payload);
-            }
+        }
 
     }
 
