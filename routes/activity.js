@@ -139,7 +139,6 @@ exports.execute = function (req, res) {
 
   // Mongo Start
   const mongodb = require('mongodb');
-  const MongoClient = mongodb.MongoClient;
 
   try {
     var dt = new Date();
@@ -152,25 +151,13 @@ exports.execute = function (req, res) {
     };
 
     let uri = process.env.MONGODB_URI
+    let dbname = uri.split("/").pop();
+    console.log(`MONGO DB NAME: ${dbname}`);
 
-    MongoClient.connect(uri, (err, db) => {
-      let contacts = db.collection('contacts');
-
-      console.log(`MONGO INSERT DATA: ${JSON.stringify(seedData)}`);
-      contacts.insertOne(seedData, function (err, result) {
-
-        if (err) throw console.log(`MONGO INSERT error!!!`);
-
-        console.log(`MONGO INSERT result: ${result}`);
-        db.close()
-      });
-    });
-
-    /*
     mongodb.MongoClient.connect(uri, function (err, client) {
       if (err) throw err;
 
-      let db = client.db('heroku_tjqx7b5m');
+      let db = client.db(dbname);
       let contacts = db.collection('contacts');
 
       console.log(`MONGO INSERT DATA: ${JSON.stringify(seedData)}`);
@@ -181,7 +168,6 @@ exports.execute = function (req, res) {
         console.log(`MONGO INSERT result: ${result}`);
       });
     });
-  */
   } catch (ex) {
     console.error(`Exception!!!: ${JSON.stringify(ex)}`);
     res.send(500, 'Execute');
