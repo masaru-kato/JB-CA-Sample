@@ -76,7 +76,8 @@ exports.execute = function (req, res) {
   var decodedArgs;
   var contactKey = "";
   var inParams = "";
-
+  var params = "";
+  
   // example on how to decode JWT
   JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
