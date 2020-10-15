@@ -28,6 +28,7 @@
     "body-parser": "^1.19.0",
     "bower": "^1.8.0",
     "date-utils": "^1.2.21",
+    "dateformat": "^3.0.3",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
     "jade": "*",

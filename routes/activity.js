@@ -77,7 +77,7 @@ exports.execute = function (req, res) {
   var contactKey = "";
   var inParams = "";
   var params = "";
-  
+
   // example on how to decode JWT
   JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
@@ -157,8 +157,9 @@ exports.execute = function (req, res) {
   
   client.connect();
   
+  var dateformat = require('dateformat');
   var dt = new Date();
-  var formatted = dt.toFormat("YYYY-MM-DD HH24:MI:SS");
+  var formatted = dateformat(dt, 'isoDateTime');
 
   const sql = {
     text: 'INSERT INTO contactInfo(contactKey,FirstName,LastName,Email,setting1,setting2,date) VALUES ($1, $2, $3, $4, $5, $6, $7)',
