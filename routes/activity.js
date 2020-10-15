@@ -95,6 +95,7 @@ exports.execute = function (req, res) {
 
       contactKey = decodedArgs.contactKey;
       inParams = decoded.inArguments;
+      params = decoded.inArguments[0];
 
     } else {
       // NG
@@ -104,39 +105,6 @@ exports.execute = function (req, res) {
   });
 
   /*
-  // From
-  const querystring = require('querystring');
-  const https = require('https');
-          
-  var param1 = contactKey;
-  var params = "?a=nodea&b=nodeb&c=nodec&d=" + param1;
-  var urlpath = encodeURI('/45sk4d4xhvf' + params);
-  //var urlpath = '45sk4d4xhvf' + params;
-  console.log(`PATH: ${urlpath}`);
- 
-  const options = {
-    protocol: 'https:',
-    host: 'fe3915707564057a721674.pub.s10.sfmc-content.com',
-    path: urlpath,
-    method: 'GET',
-  };
- 
-  const req = https.request(options, (res) => {
-      res.on('data', (chunk) => {
-          console.log(`BODY: ${chunk}`);
-      });
-      res.on('end', () => {
-          console.log('No more data in response.');
-      });
-  })
- 
-  req.on('error', (e) => {
-    console.error(`problem with request: ${e.message}`);
-  });
- 
-  req.end();
-  */
-
   // Mongo Start
   const mongodb = require('mongodb');
 
@@ -174,6 +142,36 @@ exports.execute = function (req, res) {
     res.send(500, 'Execute');
   }
   // Mondo End
+  */
+
+  // Heroku Posgres Start
+  const { Client } = require('pg');
+
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  });
+  
+  client.connect();
+  
+  var dt = new Date();
+  var formatted = dt.toFormat("YYYY-MM-DD HH24:MI:SS");
+
+  const sql = {
+    text: 'INSERT INTO contactInfo(contactKey,FirstName,LastName,Email,setting1,setting2,date) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+    values: [params.contactKey,params.FirstName,params.LastName,params.Email,params.setting1,params.setting2,formatted],
+  }
+  client.query(sql, (err, res) => {
+    if (err) {
+      console.log(err.stack);
+    }else{
+      console.log(res.rows[0]);
+    }
+    client.end();
+  });
+  // Heroku Posgres End
 
   logData(req);
   res.send(200, 'Execute');
