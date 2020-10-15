@@ -1,8 +1,8 @@
 # Journey Builder Custom Activity Sample
-### Sample JB Custom Activity using Node.JS/MongoDB
+### Sample JB Custom Activity using Heroku Postgres
 
 **NOTE:** Don't use this app for prodution. no one is responsible. just sample.
-This app just push Contact information sent from JB to MongoDB. That's it. You can customize.
+This app just insert Contact information sent from JB to Postgres DB. That's it. You can customize.
 
 ### Getting Started
 
