@@ -80,8 +80,27 @@
     "schema": {
         "arguments": {
             "execute": {
-                "inArguments": [],
-                "outArguments": []
+                "inArguments": [
+                  {
+                    "setting1": { "dataType": "Text", "isNullable": false, "direction": "in" },
+                    "setting2": { "dataType": "Text", "isNullable": true, "direction": "in" },
+                    "setting3": { "dataType": "Text", "isNullable": true, "direction": "in" },
+                    "setting4": { "dataType": "Text", "isNullable": true, "direction": "in" },
+                    "contactKey": { "dataType": "Text", "isNullable": false, "direction": "in" },
+                    "FirstName": { "dataType": "Text", "isNullable": true, "direction": "in" },
+                    "LastName": { "dataType": "Text", "isNullable": true, "direction": "in" },
+                    "Birthday": { "dataType": "Text", "isNullable": true, "direction": "in" },
+                    "Email": { "dataType": "Text", "isNullable": true, "direction": "in" }	
+                  }      
+                ],
+                "outArguments": [
+                  {
+                    "result": {"dataType": "Text","direction": "out","access": "visible"},
+                    "retval1": {"dataType": "Text","direction": "out","access": "visible"},
+                    "retval2": {"dataType": "Text","direction": "out","access": "visible"},
+                    "retval3": {"dataType": "Text","direction": "out","access": "visible"}
+                  }
+                ]
             }
         }
     }
