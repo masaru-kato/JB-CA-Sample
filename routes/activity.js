@@ -161,10 +161,15 @@ exports.execute = function (req, res) {
   var dt = new Date();
   var formatted = dateformat(dt, 'isoDateTime');
 
+  var sqltext = '';
+  sqltext  = sqltext + 'INSERT INTO contactInfo(contactKey,FirstName,LastName,Email,setting1,setting2,date) VALUES ($1, $2, $3, $4, $5, $6, $7) ';
+  sqltext  = sqltext + 'ON CONFLICT(contactKey) ';
+  sqltext  = sqltext + 'DO UPDATE SET setting1=$5, setting2=$6, date=$7 ';
+  
   const sql = {
-    text: 'INSERT INTO contactInfo(contactKey,FirstName,LastName,Email,setting1,setting2,date) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+    text: sqltext,
     values: [params.contactKey,params.FirstName,params.LastName,params.Email,params.setting1,params.setting2,formatted],
-  }
+  }  
   client.query(sql, (err, res) => {
     if (err) {
       console.log(err.stack);
@@ -197,7 +202,8 @@ exports.publish = function (req, res) {
   // Data from the req and put it in an array accessible to the main app.
   //console.log( req.body );
   logData(req);
-  res.send(200, 'Publish');
+  //res.send(200, 'Publish');
+  return res.status(200).send('Publish');
 };
 
 /*
@@ -207,5 +213,6 @@ exports.validate = function (req, res) {
   // Data from the req and put it in an array accessible to the main app.
   //console.log( req.body );
   logData(req);
-  res.send(200, 'Validate');
+  //res.send(200, 'Validate');
+  return res.status(200).send('Validate');
 };
