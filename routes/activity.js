@@ -190,8 +190,7 @@ exports.execute = function (req, res) {
   logData(req);
   console.log(`OUT ARGS: ${JSON.stringify(outArgs)}`);
   //res.send(200, 'Execute');
-  return res.status(200).json(JSON.stringify(outArgs));
-
+  return res.status(200).send(JSON.stringify(outArgs));
 };
 
 
