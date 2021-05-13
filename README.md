@@ -41,12 +41,12 @@ This guide covers Heroku, skip this step if you are familiar on how to deploy a 
 3. Click on "Reveal config vars"
 4. Add a new var called jwtSecret and paste the App Signature you got from step 3 when configuring your package in Marketing Cloud
 
-#### Provision mLab MongoDB
+#### Provision Heroku Postgres
 
-1. Add ｍLab MongoDB addon to your app.
+1. Add Heroku Postgres addon to your app.
 2. Create user/password and create ConnectionString.
-3. Set ConnectionString to Heroku vars named "MONGODB_URI" which was set with provisioning of mLab Mongo.
-    ex. mongodb://[USER]:[PASSWORD]@[SERVERNAME].mlab.com:[PORTNO]/[DBNAME]
+3. Set ConnectionString to Heroku vars named "DATABASE_URL"" which was set with provisioning of mLab Mongo.
+    ex. postgres://[USER]:[PASSWORD]@[SERVERURL]:[PORTNO]/[DBNAME]
 
 #### Customize and Test your Activity!!
 

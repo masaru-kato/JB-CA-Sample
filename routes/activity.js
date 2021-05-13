@@ -175,8 +175,17 @@ exports.execute = function (req, res) {
   });
   // Heroku Posgres End
 
+  const outArgs = {
+    result: "ok",
+    retval1: params.contactKey,
+    retval2: params.Email,
+    retval3: params.setting1
+  };
+
   logData(req);
-  res.send(200, 'Execute');
+  console.log(`OUT ARGS: ${JSON.stringify(outArgs)}`);
+  //res.send(200, 'Execute');
+  return res.status(200).json(outArgs);
 
 };
 

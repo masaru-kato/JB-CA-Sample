@@ -27,7 +27,14 @@
               "Email": "{{Contact.Attribute.TestDE1.Email}}"	
             }
 			],
-          "outArguments": [],
+          "outArguments": [
+            {
+              "result": "",
+              "retval1": "",
+              "retval2": "",
+              "retval3": ""
+            }
+          ],
           "url": "https://jb-ca-sample.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
             "body": "",
