@@ -170,11 +170,11 @@ exports.execute = function (req, res) {
     text: sqltext,
     values: [params.contactKey,params.FirstName,params.LastName,params.Email,params.setting1,params.setting2,formatted],
   }  
-  client.query(sql, (err, res) => {
+  client.query(sql, (error, response) => {
     if (err) {
-      console.log(err.stack);
+      console.log(error.stack);
     }else{
-      console.log(res.rows[0]);
+      console.log(response.rows[0]);
     }
     client.end();
   });
