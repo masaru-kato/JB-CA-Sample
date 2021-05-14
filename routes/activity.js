@@ -171,7 +171,7 @@ exports.execute = function (req, res) {
     values: [params.contactKey,params.FirstName,params.LastName,params.Email,params.setting1,params.setting2,formatted],
   }  
   client.query(sql, (error, response) => {
-    if (err) {
+    if (error) {
       console.log(error.stack);
     }else{
       console.log(response.rows[0]);

@@ -45,7 +45,7 @@ This guide covers Heroku, skip this step if you are familiar on how to deploy a 
 
 1. Add Heroku Postgres addon to your app.
 2. Create user/password and create ConnectionString.
-3. Set ConnectionString to Heroku vars named "DATABASE_URL"" which was set with provisioning of mLab Mongo.
+3. Set ConnectionString to Heroku vars named "DATABASE_URL".
     ex. postgres://[USER]:[PASSWORD]@[SERVERURL]:[PORTNO]/[DBNAME]
 
 #### Customize and Test your Activity!!
