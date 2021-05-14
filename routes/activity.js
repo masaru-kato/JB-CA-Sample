@@ -55,7 +55,8 @@ exports.edit = function (req, res) {
   // Data from the req and put it in an array accessible to the main app.
   //console.log( req.body );
   logData(req);
-  res.send(200, 'Edit');
+  //res.send(200, 'Edit');
+  return res.status(200).send('Edit');
 };
 
 /*
@@ -65,7 +66,9 @@ exports.save = function (req, res) {
   // Data from the req and put it in an array accessible to the main app.
   //console.log( req.body );
   logData(req);
-  res.send(200, 'Save');
+  logData(res);
+  //res.send(200, 'Save');
+  return res.status(200).send('Save');
 };
 
 /*
