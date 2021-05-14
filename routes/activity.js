@@ -169,7 +169,7 @@ exports.execute = function (req, res) {
   const sql = {
     text: sqltext,
     values: [params.contactKey,params.FirstName,params.LastName,params.Email,params.setting1,params.setting2,formatted],
-  }  
+  };  
   client.query(sql, (error, response) => {
     if (error) {
       console.log(error.stack);
@@ -187,10 +187,12 @@ exports.execute = function (req, res) {
     retval3: params.setting1
   };
 
+  const retjs = JSON.stringify(outArgs);
   logData(req);
-  console.log(`OUT ARGS: ${JSON.stringify(outArgs)}`);
+  console.log(`OUT ARGS: ${retjs}`);
   //res.send(200, 'Execute');
-  return res.status(200).send(JSON.stringify(outArgs));
+  logData(res);
+  return res.status(200).send(retjs);
 };
 
 
