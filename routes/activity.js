@@ -195,7 +195,7 @@ exports.execute = function (req, res) {
   console.log(`OUT ARGS: ${retjs}`);
   //res.send(200, 'Execute');
   logData(res);
-  return res.status(200).send(retjs);
+  res.status(200).send(retjs);
 };
 
 
