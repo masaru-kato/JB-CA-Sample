@@ -175,16 +175,16 @@ exports.execute = function (req, res) {
   };  
   client.query(sql, (error, response) => {
     if (error) {
-      console.log("SQL ERROR!");
+      console.log('Query Error.');
     }else{
-      console.log("SQL SUCCESS");
+      console.log('Query OK.');
     }
     client.end();
   });
   // Heroku Posgres End
 
   const outArgs = {
-    status: "ok",
+    status: 'OK',
     retval1: params.contactKey,
     retval2: params.Email,
     retval3: params.setting1
@@ -194,7 +194,8 @@ exports.execute = function (req, res) {
   logData(req);
   console.log(`OUT ARGS: ${retjs}`);
   //res.send(200, 'Execute');
-  logData(res);
+
+  //res.send(200, retjs);
   return res.status(200).json(outArgs);
 };
 
@@ -222,11 +223,5 @@ exports.validate = function (req, res) {
 };
 
 exports.test = function (req, res) {
-  // Data from the req and put it in an array accessible to the main app.
-  //console.log( req.body );
-  logData(req);
-  logData(res);
-  logData(req.res);
-  //res.send(200, 'Validate');
   return res.status(200).send('test');
 };
