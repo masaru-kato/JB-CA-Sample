@@ -29,7 +29,7 @@
 			],
           "outArguments": [
             {
-              "result": "",
+              "status": "",
               "retval1": "",
               "retval2": "",
               "retval3": ""
@@ -95,7 +95,7 @@
                 ],
                 "outArguments": [
                   {
-                    "result": {"dataType": "Text","direction": "out","access": "visible"},
+                    "status": {"dataType": "Text","direction": "out","access": "visible"},
                     "retval1": {"dataType": "Text","direction": "out","access": "visible"},
                     "retval2": {"dataType": "Text","direction": "out","access": "visible"},
                     "retval3": {"dataType": "Text","direction": "out","access": "visible"}

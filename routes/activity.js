@@ -184,7 +184,7 @@ exports.execute = function (req, res) {
   // Heroku Posgres End
 
   const outArgs = {
-    result: "ok",
+    status: "ok",
     retval1: params.contactKey,
     retval2: params.Email,
     retval3: params.setting1
@@ -195,7 +195,7 @@ exports.execute = function (req, res) {
   console.log(`OUT ARGS: ${retjs}`);
   //res.send(200, 'Execute');
   logData(res);
-  res.status(200).send(retjs);
+  return res.status(200).json(outArgs);
 };
 
 
@@ -219,4 +219,14 @@ exports.validate = function (req, res) {
   logData(req);
   //res.send(200, 'Validate');
   return res.status(200).send('Validate');
+};
+
+exports.test = function (req, res) {
+  // Data from the req and put it in an array accessible to the main app.
+  //console.log( req.body );
+  logData(req);
+  logData(res);
+  logData(req.res);
+  //res.send(200, 'Validate');
+  return res.status(200).send('test');
 };
