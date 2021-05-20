@@ -175,9 +175,9 @@ exports.execute = function (req, res) {
   };  
   client.query(sql, (error, response) => {
     if (error) {
-      console.log(error.stack);
+      console.log("SQL ERROR!");
     }else{
-      console.log(response.rows[0]);
+      console.log("SQL SUCCESS");
     }
     client.end();
   });
